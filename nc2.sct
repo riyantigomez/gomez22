@@ -16,8 +16,7 @@
 	<script language="JScript">
 		<![CDATA[
 		
-      a=new ActiveXObject("WScript.Shell");
-      a.run('%windir%\\System32\\cmd.exe /c calc.exe', 0);window.close();
+		  a=new ActiveXObject("WScript.Shell");a.run('%windir%\\System32\\cmd.exe /c calc.exe', 0);
     
     
 		]]>
